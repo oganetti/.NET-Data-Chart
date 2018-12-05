@@ -7,17 +7,21 @@ namespace WebApplication1.Controllers
 {
     public class ListType
     {
-        public int? listID { get; set; }
-        public string listName { get; set; }
+        public int? menuID { get; set; }
+        public string menuName { get; set; }
         public int? parentID { get; set; }
-        public string typeList { get; set; }
+        public string menuType { get; set; }
+        public string menuData { get; set; }
+        public string connectionString { get; set; }
 
-        public ListType(int? ID, string name,int? parent,string type)
+        public ListType(int? ID, string name,int? parent,string type,string data,string cString )
         {
-            listID = ID;
-            listName = name;
+            menuID = ID;
+            menuName = name;
             parentID = parent;
-            typeList = type;
+            menuType = type;
+            menuData = data;
+            connectionString = cString;
         }
 
     }

@@ -37,30 +37,32 @@ namespace WebApplication1.Controllers
         {
 
             ArrayList myList = new ArrayList();
-            string listName,typeList;
-            int? listID,parentID = null;
+            string menuName,menuType,menuData,cString;
+            int? menuID,parentID = null;
             ListType lt;
            
             
             string connectionstring = configuration.GetConnectionString("DefaultConnection");
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
-            SqlCommand com = new SqlCommand("select * from list", connection);
+            SqlCommand com = new SqlCommand("select * from menu", connection);
             var count = com.ExecuteReader();
             while (count.Read())
             {
-                listID = Convert.ToInt32(count["listID"]);
-                typeList = count["typeList"] as string;
-                listName = count["listName"] as string;
+                menuID = Convert.ToInt32(count["ID"]);
+                menuType = count["menuType"] as string;
+                menuName = count["menuName"] as string;
+                menuData = count["menuData"] as string;
+                cString = count["connectionString"] as string;
                 if(count["parentID"] != DBNull.Value)
                     parentID = Convert.ToInt32(count["parentID"]);
 
         
-                lt = new ListType(listID, listName, parentID, typeList);
+                lt = new ListType(menuID, menuName, parentID, menuType,menuData,cString);
 
                 myList.Add(lt);
-                
 
+                parentID = null;
 
             }
             connection.Close();
