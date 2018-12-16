@@ -8,14 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class SqlController : Controller
     {
         // GET api/values
         [HttpGet]
         [EnableCors("AllowSpecificOrigin")]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "ogan", "dragonetti" };
         }
 
         // GET api/values/5
@@ -27,11 +27,10 @@ namespace WebApplication1.Controllers
 
         // POST api/values
         [HttpPost]
-        public JsonResult Post([FromBody]Data value)
+        public void Post([FromBody]string value)
         {
-            var data = value;
-            return Json(new { success = true, result = "My name is " });
- 
+
+
         }
 
         // PUT api/values/5
@@ -39,7 +38,7 @@ namespace WebApplication1.Controllers
         public void Put(int id, [FromBody]string value)
         {
 
-           
+
         }
 
         // DELETE api/values/5
