@@ -12,5 +12,11 @@ namespace WebApplication1.Controllers
         public string name { get; set; }
 
 
+        public Data(string cString, string nameData )
+        {
+            name = nameData;
+            connectionString = cString;
+        }
+
     }
 }
