@@ -53,19 +53,26 @@ namespace WebApplication1.Controllers
         public JsonResult Post([FromBody]Data value)
         {
 
-          
+            string deneme = value.connectionString;
+            deneme = deneme.Remove(9, 1);
       
-            SqlConnection connection = new SqlConnection("Server =.\\SQLEXPRESS; Database = test; Trusted_Connection = True; MultipleActiveResultSets = true");
+            SqlConnection connection = new SqlConnection(deneme);
             connection.Open();
 
-            string deneme;
+            string getString;
             List<string> column;
             List<string> listacolumnas = new List<string>();
+            Dictionary<string, string> column2;
             List<List<string>> rows = new List<List<string>>();
+            List<Dictionary<string,string>> rows2 = new List<Dictionary<string,string>>();
+
+
+
+            //Get the column names frım the table
 
             using (SqlCommand command = connection.CreateCommand())
             {
-                command.CommandText = "select c.name from sys.columns c inner join sys.tables t on t.object_id = c.object_id and t.name = 'salary' and t.type = 'U'";
+                command.CommandText = "select c.name from sys.columns c inner join sys.tables t on t.object_id = c.object_id and t.name = '"+value.name+"' and t.type = 'U'";
   
                 using (var reader = command.ExecuteReader())
                 {
@@ -76,27 +83,46 @@ namespace WebApplication1.Controllers
                 }
             }
 
+            //Get the data from table
+
             SqlCommand com = new SqlCommand("select * from " + value.name, connection);
             SqlDataReader reader2 = com.ExecuteReader();
             while (reader2.Read())
-            {    //Every new row will create a new dictionary that holds the columns
+            {    
                 column = new List< string>();
 
                 for (int i = 0; i < listacolumnas.Count; i++)
                 {
                     
-                    deneme= reader2[listacolumnas[i]].ToString();
-                    column.Add(deneme);
+                    getString= reader2[listacolumnas[i]].ToString();
+                    column.Add(getString);
                 }
      
 
-                rows.Add(column); //Place the dictionary into the list
+                rows.Add(column); 
+            }
+
+            SqlCommand com2 = new SqlCommand("select * from " + value.name, connection);
+            SqlDataReader reader3 = com2.ExecuteReader();
+            while (reader3.Read())
+            {
+                column2 = new Dictionary<string, string>();
+
+                for (int i = 0; i < listacolumnas.Count; i++)
+                {
+
+                    column2[listacolumnas[i]] = reader3[listacolumnas[i]].ToString();
+                  
+                }
+
+
+                rows2.Add(column2);
             }
 
 
             connection.Close();
 
-            return Json(new { listacolumnas, rows});
+            return Json(new { listacolumnas, rows,rows2});
  
         }
 

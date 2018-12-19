@@ -42,6 +42,7 @@ namespace WebApplication1.Controllers
             int? menuID,parentID = null;
             ListType lt;
            
+            //Get the data from the specific connection string
             
             string connectionstring = configuration.GetConnectionString("DefaultConnection");
             SqlConnection connection = new SqlConnection(connectionstring);
