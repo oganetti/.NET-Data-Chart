@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
+
 namespace WebApplication1.Controllers
 
 
@@ -41,6 +42,7 @@ namespace WebApplication1.Controllers
             int? menuID,parentID = null;
             ListType lt;
            
+            //Get the data from the specific connection string
             
             string connectionstring = configuration.GetConnectionString("DefaultConnection");
             SqlConnection connection = new SqlConnection(connectionstring);
