@@ -53,9 +53,16 @@ namespace WebApplication1.Controllers
         public JsonResult Post([FromBody]Data value)
         {
 
+<<<<<<< HEAD
        
       
             SqlConnection connection = new SqlConnection(value.connectionString);
+=======
+            string deneme = value.connectionString;
+            deneme = deneme.Remove(9, 1);
+      
+            SqlConnection connection = new SqlConnection(deneme);
+>>>>>>> 9b4dc2cffe091c40355f6622ad839bdf2014c412
             connection.Open();
 
             string getString;
@@ -67,6 +74,7 @@ namespace WebApplication1.Controllers
 
 
 
+<<<<<<< HEAD
             //Get the data from table
 
             SqlCommand com = new SqlCommand(value.name, connection);
@@ -100,6 +108,59 @@ namespace WebApplication1.Controllers
             }
 
           
+=======
+            //Get the column names frım the table
+
+            using (SqlCommand command = connection.CreateCommand())
+            {
+                command.CommandText = "select c.name from sys.columns c inner join sys.tables t on t.object_id = c.object_id and t.name = '"+value.name+"' and t.type = 'U'";
+  
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        listacolumnas.Add(reader.GetString(0));
+                    }
+                }
+            }
+
+            //Get the data from table
+
+            SqlCommand com = new SqlCommand("select * from " + value.name, connection);
+            SqlDataReader reader2 = com.ExecuteReader();
+            while (reader2.Read())
+            {    
+                column = new List< string>();
+
+                for (int i = 0; i < listacolumnas.Count; i++)
+                {
+                    
+                    getString= reader2[listacolumnas[i]].ToString();
+                    column.Add(getString);
+                }
+     
+
+                rows.Add(column); 
+            }
+
+            SqlCommand com2 = new SqlCommand("select * from " + value.name, connection);
+            SqlDataReader reader3 = com2.ExecuteReader();
+            while (reader3.Read())
+            {
+                column2 = new Dictionary<string, string>();
+
+                for (int i = 0; i < listacolumnas.Count; i++)
+                {
+
+                    column2[listacolumnas[i]] = reader3[listacolumnas[i]].ToString();
+                  
+                }
+
+
+                rows2.Add(column2);
+            }
+
+>>>>>>> 9b4dc2cffe091c40355f6622ad839bdf2014c412
 
             connection.Close();
 
