@@ -22,7 +22,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "WebApplication1/1.0.0": {
+      "OplogDataChartBackend/1.0.0": {
         "dependencies": {
           "AutoMapper": "8.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
@@ -34,10 +34,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.4"
         },
         "runtime": {
-          "WebApplication1.dll": {}
+          "OplogDataChartBackend.dll": {}
         },
         "compile": {
-          "WebApplication1.dll": {}
+          "OplogDataChartBackend.dll": {}
         }
       },
       "AutoMapper/8.0.0": {
@@ -4932,7 +4932,7 @@
     }
   },
   "libraries": {
-    "WebApplication1/1.0.0": {
+    "OplogDataChartBackend/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

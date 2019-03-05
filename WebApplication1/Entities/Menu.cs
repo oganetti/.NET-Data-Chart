@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WebApplication1.Controllers
+﻿namespace OplogDataChartBackend.Entities
 {
-    public class ListType
+    public class Menu
     {
         public int? menuID { get; set; }
         public string menuName { get; set; }
@@ -14,7 +9,7 @@ namespace WebApplication1.Controllers
         public string menuData { get; set; }
         public string connectionString { get; set; }
 
-        public ListType(int? ID, string name,int? parent,string type,string data,string cString )
+        public Menu(int? ID, string name,int? parent,string type,string data,string cString )
         {
             menuID = ID;
             menuName = name;
