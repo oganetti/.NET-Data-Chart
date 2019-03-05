@@ -97,7 +97,7 @@ namespace WebApplication1.Controllers
 
             for (int i = 0; i < reader2.FieldCount; i++)
             {
-                string test2 = reader2.GetName(k);
+                string test2 = reader2.GetName(i);
                 listacolumnas.Add(test2);
 
             }
