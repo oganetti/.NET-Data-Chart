@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using OplogDataChartBackend.Entities;
 using OplogDataChartBackend.Services;
+using System.Collections.Generic;
 
 namespace OplogDataChartBackend.Controllers
 {
 
-    
+
 
     [Route("api/[controller]")]
     public class ValuesController : Controller
@@ -33,6 +34,7 @@ namespace OplogDataChartBackend.Controllers
             return new string[] { "Ogan", "Dragonetti" };
         }
 
+        [Authorize]
         [HttpPost]
         public JsonResult Post([FromBody]Data value)
         {

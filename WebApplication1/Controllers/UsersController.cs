@@ -42,16 +42,23 @@ namespace OplogDataChartBackend.Controllers
         public async Task<IActionResult> Authenticate([FromBody]UserDto model)
         {
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
-
+            var token = GenerateJwtToken();
 
             if (result.Succeeded)
             {
-                return Ok(GenerateJwtToken());
+                return Ok(new
+                {
+                    Id = 28290,
+                    Username = model.UserName,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Token = token.Token
+                });
             }
 
-            // return basic user info (without password) and token to store client side
-            return Unauthorized();
-            
+            return BadRequest(new { message = "Username or password is incorrect" });
+
+
         }
 
         [AllowAnonymous]
@@ -61,7 +68,7 @@ namespace OplogDataChartBackend.Controllers
             var user = new User(
                         model.FirstName,
                         model.LastName,
-                        model.Email,
+                        null,
                         model.UserName
                         );
 
@@ -74,7 +81,14 @@ namespace OplogDataChartBackend.Controllers
 
             return BadRequest(result.Errors);
         }
-     
+
+
+        [HttpGet]
+        public IActionResult Deneme()
+        {
+            return Ok("Deneme");
+        }
+
         private TokenResponse GenerateJwtToken()
         {
             var tokenHandler = new JwtSecurityTokenHandler();
