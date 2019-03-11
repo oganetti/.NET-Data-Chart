@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using EFCoreAutoMigrator;
+﻿using EFCoreAutoMigrator;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using OplogDataChartBackend.DataAcess;
+using OplogDataChartBackend.Entities;
 
 namespace OplogDataChartBackend
 {
@@ -25,10 +19,11 @@ namespace OplogDataChartBackend
                 using (IServiceScope serviceScope = server.Services.GetService<IServiceScopeFactory>().CreateScope())
                 {
                     UserDbContext userDbContext = serviceScope.ServiceProvider.GetService<UserDbContext>();
+                    UserManager<User> userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                     new AutoMigrator(userDbContext)
                         .EnableAutoMigration(false, MigrationModelHashStorageMode.Database, () =>
                         {
-                            new SeedInitializer(userDbContext).Seed();
+                            new SeedInitializer(userDbContext, userManager).Seed();
                         });
                 }
             }

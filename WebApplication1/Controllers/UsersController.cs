@@ -13,6 +13,7 @@ using OplogDataChartBackend.Dtos;
 using OplogDataChartBackend.Entities;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace OplogDataChartBackend.Controllers
 {
@@ -42,13 +43,17 @@ namespace OplogDataChartBackend.Controllers
         public async Task<IActionResult> Authenticate([FromBody]UserDto model)
         {
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
-            var token = GenerateJwtToken();
+          
 
             if (result.Succeeded)
             {
+
+                var user = await _userManager.FindByNameAsync(model.UserName);
+                var token = GenerateJwtToken(user.Id);
+
                 return Ok(new
                 {
-                    Id = 28290,
+                    Id = user.Id, 
                     Username = model.UserName,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
@@ -76,7 +81,7 @@ namespace OplogDataChartBackend.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return Ok(GenerateJwtToken());
+               // return Ok(GenerateJwtToken());
             }
 
             return BadRequest(result.Errors);
@@ -89,12 +94,16 @@ namespace OplogDataChartBackend.Controllers
             return Ok("Deneme");
         }
 
-        private TokenResponse GenerateJwtToken()
+        private TokenResponse GenerateJwtToken(string id)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, id)
+                }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };

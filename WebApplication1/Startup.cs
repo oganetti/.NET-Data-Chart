@@ -82,6 +82,8 @@ namespace OplogDataChartBackend
                 };
             });
 
+            services.AddScoped<DbContext, UserDbContext>();
+
             // configure DI for application services
             services.AddScoped<ValuesServices>();
             services.AddScoped<MenuServices>();

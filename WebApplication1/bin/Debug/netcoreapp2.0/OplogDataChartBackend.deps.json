@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "44e4c7440ce9b0ea2253bf92e569ca0a70910de7"
+    "signature": "35fc8af258398e1bb538b5a432196ccd8a1c6537"
   },
   "compilationOptions": {
     "defines": [
@@ -26,6 +26,7 @@
         "dependencies": {
           "AutoMapper": "8.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
+          "Bogus": "26.0.1",
           "EFCoreAutoMigrator": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.8",
           "Microsoft.Extensions.DependencyInjection": "2.2.0",
@@ -68,6 +69,17 @@
         },
         "compile": {
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
+      "Bogus/26.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Bogus.dll": {
+            "assemblyVersion": "26.0.1.0",
+            "fileVersion": "26.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Bogus.dll": {}
         }
       },
       "EFCoreAutoMigrator/1.0.0": {
@@ -4950,6 +4962,13 @@
       "sha512": "sha512-njWYKGM3FokOlo9nj8kVLYyvJrGbLItmNA2A00lDXJnxybfP7TuZEYjQRt8ne+Cp0OF4W0ZzgdgxMioHfDEpdA==",
       "path": "automapper.extensions.microsoft.dependencyinjection/6.0.0",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512"
+    },
+    "Bogus/26.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OqaYXsB2cnxPrKCiv2Az+iotn0mQTZ7QR5e014Ywq2qY/yrhNzO068riqQyFsuZrPLEH6VJuH2yZJtCqnlAExg==",
+      "path": "bogus/26.0.1",
+      "hashPath": "bogus.26.0.1.nupkg.sha512"
     },
     "EFCoreAutoMigrator/1.0.0": {
       "type": "package",

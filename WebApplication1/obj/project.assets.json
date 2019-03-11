@@ -28,6 +28,15 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "Bogus/26.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Bogus.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bogus.dll": {}
+        }
+      },
       "EFCoreAutoMigrator/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -5123,6 +5132,26 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.pdb"
+      ]
+    },
+    "Bogus/26.0.1": {
+      "sha512": "OqaYXsB2cnxPrKCiv2Az+iotn0mQTZ7QR5e014Ywq2qY/yrhNzO068riqQyFsuZrPLEH6VJuH2yZJtCqnlAExg==",
+      "type": "package",
+      "path": "bogus/26.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bogus.26.0.1.nupkg.sha512",
+        "bogus.nuspec",
+        "lib/net40/Bogus.dll",
+        "lib/net40/Bogus.pdb",
+        "lib/net40/Bogus.xml",
+        "lib/netstandard1.3/Bogus.dll",
+        "lib/netstandard1.3/Bogus.pdb",
+        "lib/netstandard1.3/Bogus.xml",
+        "lib/netstandard2.0/Bogus.dll",
+        "lib/netstandard2.0/Bogus.pdb",
+        "lib/netstandard2.0/Bogus.xml"
       ]
     },
     "EFCoreAutoMigrator/1.0.0": {
@@ -13629,6 +13658,7 @@
     ".NETCoreApp,Version=v2.0": [
       "AutoMapper >= 8.0.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 6.0.0",
+      "Bogus >= 26.0.1",
       "EFCoreAutoMigrator >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.8",
       "Microsoft.Extensions.DependencyInjection >= 2.2.0",
@@ -13661,7 +13691,9 @@
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {},
+        "https://oplog.pkgs.visualstudio.com/_packaging/OPM/nuget/v3": {},
         "https://oplog.pkgs.visualstudio.com/_packaging/OPM/nuget/v3/index.json": {}
       },
       "frameworks": {
@@ -13685,6 +13717,10 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[6.0.0, )"
+          },
+          "Bogus": {
+            "target": "Package",
+            "version": "[26.0.1, )"
           },
           "EFCoreAutoMigrator": {
             "target": "Package",
