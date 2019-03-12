@@ -21,9 +21,10 @@ namespace OplogDataChartBackend
                     UserDbContext userDbContext = serviceScope.ServiceProvider.GetService<UserDbContext>();
                     UserManager<User> userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                     new AutoMigrator(userDbContext)
-                        .EnableAutoMigration(false, MigrationModelHashStorageMode.Database, () =>
+                        .EnableAutoMigration(false, MigrationModelHashStorageMode.Database, async () =>
                         {
-                            new SeedInitializer(userDbContext, userManager).Seed();
+                            var seed = new SeedInitializer(userDbContext, userManager);
+                            await seed.Seed();
                         });
                 }
             }

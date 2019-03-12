@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using System.IdentityModel.Tokens.Jwt;
@@ -8,7 +7,6 @@ using Microsoft.Extensions.Options;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authorization;
-using OplogDataChartBackend.Services;
 using OplogDataChartBackend.Dtos;
 using OplogDataChartBackend.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -66,33 +64,28 @@ namespace OplogDataChartBackend.Controllers
 
         }
 
-        [AllowAnonymous]
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody]UserDto model)
-        {
-            var user = new User(
-                        model.FirstName,
-                        model.LastName,
-                        null,
-                        model.UserName
-                        );
+        //[AllowAnonymous]
+        //[HttpPost("register")]
+        //public async Task<IActionResult> Register([FromBody]UserDto model)
+        //{
+        //    var user = new User(
+        //                model.FirstName,
+        //                model.LastName,
+        //                null,
+        //                model.UserName
+        //                );
 
-            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded)
-            {
-                await _signInManager.SignInAsync(user, false);
-               // return Ok(GenerateJwtToken());
-            }
+        //    IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+        //    if (result.Succeeded)
+        //    {
+        //        await _signInManager.SignInAsync(user, false);
+        //       // return Ok(GenerateJwtToken());
+        //    }
 
-            return BadRequest(result.Errors);
-        }
+        //    return BadRequest(result.Errors);
+        //}
 
 
-        [HttpGet]
-        public IActionResult Deneme()
-        {
-            return Ok("Deneme");
-        }
 
         private TokenResponse GenerateJwtToken(string id)
         {

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using OplogDataChartBackend.Services;
 using System;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace OplogDataChartBackend.Controllers
 
@@ -29,13 +28,6 @@ namespace OplogDataChartBackend.Controllers
             return View();
         }
 
-        //[Authorize]
-        //[HttpGet]
-        //public JsonResult Get()
-        //{
-        //    string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        //    return Json(_menuServices.ReturnMenuList());
-        //}
 
         [Authorize]
         [HttpGet]
