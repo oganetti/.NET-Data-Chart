@@ -21,34 +21,22 @@ namespace OplogDataChartBackend.DataAcess
         {
 
             var user = new User(
-                       "Ogan",
-                       "Dragonetti",
-                       "a@a.com",
-                       "oganetti"
+                       "Hakan",
+                       "Sozer",
+                       "hakan.sozer@oplog.com.tr",
+                       "hakansozer"
                        );
 
             var user2 = new User(
-                       "Ogan",
-                       "Dragonetti",
-                       "a@a222.com",
-                       "oganetti2"
+                       "Doruk",
+                       "Ozudogru",
+                       "doruk.ozudogru@oplog.com.tr",
+                       "dorukozudogru"
                        );
 
 
-
-            //_userManager.PasswordHasher.HashPassword(user, "QWEqwe.1");
-            //user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, "QWEqwe.1");
-            //_userManager.PasswordHasher.VerifyHashedPassword(user,user.PasswordHash, "QWEqwe.1");
-            //await _dbContext.Users.AddAsync(user);
-
-
-            //user2.PasswordHash = _userManager.PasswordHasher.HashPassword(user2, "QWEqwe.1");
-            //await _dbContext.Users.AddAsync(user2);
-
-
-
-            _userManager.CreateAsync(user, "QWEqwe.1").Wait();
-            _userManager.CreateAsync(user2, "QWEqwe.1").Wait();
+            _userManager.CreateAsync(user, "QWEqwe.123.123").Wait();
+            _userManager.CreateAsync(user2, "QWEqwe.123.123").Wait();
 
             var userId = await _userManager.GetUserIdAsync(user);
             var userId2 = await _userManager.GetUserIdAsync(user2);

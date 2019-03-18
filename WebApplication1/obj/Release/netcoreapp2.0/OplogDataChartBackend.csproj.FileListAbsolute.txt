@@ -1,0 +1,11 @@
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\bin\Release\netcoreapp2.0\OplogDataChartBackend.deps.json
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\bin\Release\netcoreapp2.0\OplogDataChartBackend.runtimeconfig.json
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\bin\Release\netcoreapp2.0\OplogDataChartBackend.runtimeconfig.dev.json
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\bin\Release\netcoreapp2.0\OplogDataChartBackend.dll
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\bin\Release\netcoreapp2.0\OplogDataChartBackend.pdb
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\obj\Release\netcoreapp2.0\OplogDataChartBackend.csprojAssemblyReference.cache
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\obj\Release\netcoreapp2.0\OplogDataChartBackend.csproj.CoreCompileInputs.cache
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\obj\Release\netcoreapp2.0\OplogDataChartBackend.AssemblyInfoInputs.cache
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\obj\Release\netcoreapp2.0\OplogDataChartBackend.AssemblyInfo.cs
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\obj\Release\netcoreapp2.0\OplogDataChartBackend.dll
+C:\Users\Ogan\source\repos\WebApplication1\WebApplication1\obj\Release\netcoreapp2.0\OplogDataChartBackend.pdb

@@ -35,6 +35,7 @@ namespace OplogDataChartBackend
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                //.UseUrls("http://localhost:4000", "http://192.168.1.34:27015")
                 .UseUrls("http://localhost:4000")
                 .Build();
     }

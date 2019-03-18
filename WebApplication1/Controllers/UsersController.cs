@@ -1,17 +1,17 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using AutoMapper;
-using System.IdentityModel.Tokens.Jwt;
-using OplogDataChartBackend.Helpers;
-using Microsoft.Extensions.Options;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using OplogDataChartBackend.Dtos;
 using OplogDataChartBackend.Entities;
-using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
+using OplogDataChartBackend.Helpers;
+using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace OplogDataChartBackend.Controllers
 {
@@ -41,7 +41,7 @@ namespace OplogDataChartBackend.Controllers
         public async Task<IActionResult> Authenticate([FromBody]UserDto model)
         {
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
-          
+
 
             if (result.Succeeded)
             {
@@ -51,7 +51,7 @@ namespace OplogDataChartBackend.Controllers
 
                 return Ok(new
                 {
-                    Id = user.Id, 
+                    Id = user.Id,
                     Username = model.UserName,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
@@ -64,26 +64,28 @@ namespace OplogDataChartBackend.Controllers
 
         }
 
-        //[AllowAnonymous]
-        //[HttpPost("register")]
-        //public async Task<IActionResult> Register([FromBody]UserDto model)
-        //{
-        //    var user = new User(
-        //                model.FirstName,
-        //                model.LastName,
-        //                null,
-        //                model.UserName
-        //                );
+        [Authorize]
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody]UserDto model)
+        {
+            var user = new User(
+                        model.FirstName,
+                        model.LastName,
+                        "",
+                        model.UserName
+                        );
 
-        //    IdentityResult result = await _userManager.CreateAsync(user, model.Password);
-        //    if (result.Succeeded)
-        //    {
-        //        await _signInManager.SignInAsync(user, false);
-        //       // return Ok(GenerateJwtToken());
-        //    }
 
-        //    return BadRequest(result.Errors);
-        //}
+
+            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                await _signInManager.SignInAsync(user, false);
+                return Ok(new { message = "Kayıt oldu" });
+            }
+
+            return BadRequest(result.Errors);
+        }
 
 
 
